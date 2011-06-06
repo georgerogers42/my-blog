@@ -1,5 +1,5 @@
 (ns my-blog.core
-  (:use ring.addapter.jetty
+  (:use ring.adapter.jetty
         compojure.core
         hiccup.core
         hiccup.html-helpers))
