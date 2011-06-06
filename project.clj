@@ -5,4 +5,5 @@
                  [hiccup "0.3.8"]
                  [compojure "0.6.3"]
                  [ring/ring-jetty-adapter "0.3.8"]]
-  :dev-dependencies [[org.clojars.autre/lein-vimclojure "1.0.0"]])
+  :dev-dependencies [[org.clojars.autre/lein-vimclojure "1.0.0"]]
+  :main my-blog.core)
