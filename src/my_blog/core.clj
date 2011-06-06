@@ -1,0 +1,8 @@
+(ns my-blog.core
+  (:use ring.addapter.jetty
+        compojure.core
+        hiccup.core
+        hiccup.html-helpers))
+(defn -main []
+  (run-jetty app {:port 8080}))
+
