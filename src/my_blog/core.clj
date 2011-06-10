@@ -13,7 +13,7 @@
 (def users     #{"george"})
 (defn -main []
   (run-jetty (wrap-params app)
-             {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"))}))
+             {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"}))
 (defn list-all-posts []
   (html5
     [:html
@@ -48,5 +48,7 @@
 (defroutes app
   (GET "/post/:title" [title]
        (show-post (first (post title))))
+  (GET "/posts/create" []
+       (post-form))
   (GET "/" []
        (list-all-posts)))
