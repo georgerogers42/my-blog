@@ -1,1 +1,1 @@
-web: lein run
+web: lein run -m my-blog.core
