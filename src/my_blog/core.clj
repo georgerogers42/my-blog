@@ -13,7 +13,7 @@
 (def users     #{"george"})
 (defn -main []
   (run-jetty (wrap-params app)
-             {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"}))
+             {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"))}))
 (defn list-all-posts []
   (html5
     [:html
