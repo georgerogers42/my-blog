@@ -19,7 +19,7 @@
     [:html
      [:head]
      [:body
-      (for [post (reverse (sort-by :date @posts))]
+      (for [post (reverse (sort-by :date posts))]
         [:div 
          [:h1 [:a {:href (str "/post/" (:title post))} (:title post)]]
          [:p [:em (:posted post)]]
@@ -47,12 +47,6 @@
       [:input {:type "submit"}]]]]))
 (defroutes app
   (GET "/post/:title" [title]
-       (show-post (first @(post title))))
-  (GET "/posts/create" []
-       (post-form))
+       (show-post (first (post title))))
   (GET "/" []
-       (list-all-posts))
-  (POST "/posts/new" [title user body password]
-        (when (and (users user) (passwords password))
-          (add-post {:title title :body body})
-          (show-post @(post title)))))
+       (list-all-posts)))
