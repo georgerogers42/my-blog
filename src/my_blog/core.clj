@@ -7,7 +7,8 @@
         ring.middleware.stacktrace
         ring.middleware.reload-modified
         ring.middleware.params)
-  (:require [clj-time.format :as time-format]))
+  (:require [clj-time.format :as time-format])
+  (:gen-class))
 (declare app)
 (def passwords #{"atbbst15"})
 (def users     #{"george"})
