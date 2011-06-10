@@ -12,7 +12,7 @@
 (def passwords #{"atbbst15"})
 (def users     #{"george"})
 (defn -main []
-  (run-jetty (wrap-params (wrap-stacktrace (wrap-reload-modified app ["src"]))) {:port 8080}))
+  (run-jetty (wrap-params (wrap-stacktrace (wrap-reload-modified app ["src"]))) {:port (get (System/getenv) "PORT" "8080")}))
 (defn list-all-posts []
   (html5
     [:html
