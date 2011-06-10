@@ -19,7 +19,7 @@
     [:html
      [:head]
      [:body
-      (for [post (reverse (sort-by :date posts))]
+      (for [post posts]
         [:div 
          [:h1 [:a {:href (str "/post/" (:title post))} (:title post)]]
          [:p [:em (:posted post)]]
