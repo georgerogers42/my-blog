@@ -5,7 +5,6 @@
         hiccup.page-helpers
         my-blog.posts
         ring.middleware.stacktrace
-        ring.middleware.reload-modified
         ring.middleware.params)
   (:require [clj-time.format :as time-format])
   (:gen-class))
@@ -13,7 +12,7 @@
 (def passwords #{"atbbst15"})
 (def users     #{"george"})
 (defn -main []
-  (run-jetty (wrap-params (wrap-stacktrace (wrap-reload-modified app ["src"])))
+  (run-jetty (wrap-params app)
              {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"}))
 (defn list-all-posts []
   (html5
