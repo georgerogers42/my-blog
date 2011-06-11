@@ -9,7 +9,8 @@
                  [ring/ring-core  "0.3.8"]
                  [ring/ring-jetty-adapter "0.3.8"]
                  [clj-time "0.3.0"]
-                 [org.markdownj/markdownj "0.3.0-1.0.2b4"]]
+                 [org.markdownj/markdownj "0.3.0-1.0.2b4"]
+                 [atompub "0.2.1-SNAPSHOT"]]
   :dev-dependencies [[swank-clojure "1.3.1"]]
   :main my-blog.core)
 
