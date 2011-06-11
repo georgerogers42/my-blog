@@ -16,4 +16,4 @@ name for **lambda** namely **fn**. Another reason is the #() which is short for 
 	;=> (11 12 13 14 15 16)
 	(map (partial + 10) [1 2 3 4 5 6])
 	;=> (11 12 13 14 15 16)
-	
+

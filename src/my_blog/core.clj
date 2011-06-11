@@ -16,9 +16,11 @@
   (html5
     [:html
      [:head
-      [:link {:href "/atom.xml" :type "application/atom+xml" :rel "alternate"
-              :title "georgerogers42"}]]
+      [:link {:href "/atom.xml" :type "application/atom+xml"
+              :rel "alternate"
+              :title "Sitewide ATOM Feed"}]]
      [:body
+      [:a {:href "/atom.xml"} "Atom Feed"]
       (for [post posts]
         [:div 
          [:h1 [:a {:href (str "/post/" (:title post))} (:title post)]]
