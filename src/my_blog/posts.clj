@@ -8,9 +8,9 @@
     :url (str "/post/" (:title post))))
 (def posts
   [{:title "Adding atom feeds in clojure"
-    :updated "11-6-11"
+    :updated "2011-6-11"
     :content (markdown "atom.md")}
    {:title  "Clojure programming"
-    :updated "11-6-10"
+    :updated "2011-6-10"
     :content (markdown "hello.md")}])
 (def post (into {} (map (juxt :title identity) posts)))
