@@ -9,7 +9,7 @@
 (def posts
   [{:title "On the balance of Quick and Dirty and Clean Code"
     :update "2011-6-11"
-    :content (markdown "posts/qnd.md")}]
+    :content (markdown "posts/qnd.md")}
    {:title "Adding atom feeds in clojure"
     :updated "2011-6-11"
     :content (markdown "posts/atom.md")}
