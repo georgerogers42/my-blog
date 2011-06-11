@@ -1,5 +1,5 @@
 (ns my-blog.posts
-  (:import [com.petebevin.markdown MarkdownProcessor]))
+  (:import [com.petebevin.markdownj MarkdownProcessor]))
 (defn markdown [file]
   (.process (MarkdownProcessor. file))) 
 (def posts
