@@ -1,7 +1,7 @@
 (ns my-blog.posts
-  (:import [com.petebevin.markdownj MarkdownProcessor]))
+  (:import [com.petebevin.markdown MarkdownProcessor]))
 (defn markdown [file]
-  (.process (MarkdownProcessor. file))) 
+  (.markdown (MarkdownProcessor.) (slurp file))) 
 (def posts
   [{:title  "Hello World"
     :posted "Friday June 10, 2011"

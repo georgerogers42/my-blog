@@ -7,7 +7,6 @@
         ring.middleware.stacktrace
         ring.middleware.params)
   (:require [clj-time.format :as time-format]))
-  (:gen-class))
 (declare app)
 (defn -main []
   (run-jetty (wrap-params app)
@@ -35,7 +34,5 @@
 (defroutes app
   (GET "/post/:title" [title]
        (show-post (post title)))
-  (GET "/posts/create" []
-       (post-form))
   (GET "/" []
        (list-all-posts)))
