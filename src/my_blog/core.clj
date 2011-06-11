@@ -17,7 +17,7 @@
     [:html
      [:head
       [:link {:href "/atom.xml" :type "application/atom+xml" :rel "alternate"
-              :title "georgerogers42"}]
+              :title "georgerogers42"}]]
      [:body
       (for [post posts]
         [:div 
