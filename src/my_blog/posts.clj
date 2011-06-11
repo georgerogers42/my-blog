@@ -7,7 +7,9 @@
     :id  (str "georgerogers42.heroku.com/post/" (:title post))
     :url (str "/post/" (:title post))))
 (def posts
-  [{:title  "Clojure programming"
-    :updated "6-10-11"
+  [{:title "Adding atom feeds in clojure"
+    :updated "11-6-11"
+   {:title  "Clojure programming"
+    :updated "11-6-10"
     :content (markdown "hello.md")}])
 (def post (into {} (map (juxt :title identity) posts)))
