@@ -1,6 +1,9 @@
-(ns my-blog.posts)
+(ns my-blog.posts
+  (:import [com.petebevin.markdown MarkdownProcessor]))
+(defn markdown [file]
+  (.process (MarkdownProcessor. file))) 
 (def posts
   [{:title  "Hello World"
     :posted "Friday June 10, 2011"
-    :body "Hello World"}])
+    :body (markdown "hello.md")}])
 (def post (into {} (map (juxt :title identity) posts)))

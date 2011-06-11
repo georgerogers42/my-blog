@@ -6,11 +6,9 @@
         my-blog.posts
         ring.middleware.stacktrace
         ring.middleware.params)
-  (:require [clj-time.format :as time-format])
+  (:require [clj-time.format :as time-format]))
   (:gen-class))
 (declare app)
-(def passwords #{"atbbst15"})
-(def users     #{"george"})
 (defn -main []
   (run-jetty (wrap-params app)
              {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"))}))
@@ -34,17 +32,6 @@
        [:p [:em (:posted post)]]
        [:p (:body post)]]
       [:h2 [:a {:href "/"} "Back"]]]]))
-(defn post-form []
-  (html5
-   [:html
-    [:head]
-    [:body
-     [:form {:method "post" :action "/posts/new"}
-      "User:" [:input {:name :user}][:br]
-      "Password: "[:input {:type :password :name :password}][:p]
-      "Title: "[:input {:name :title}][:br]
-      [:textarea {:name :body :rows 10 :cols 80}][:br]
-      [:input {:type "submit"}]]]]))
 (defroutes app
   (GET "/post/:title" [title]
        (show-post (post title)))
