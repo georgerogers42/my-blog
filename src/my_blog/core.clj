@@ -47,7 +47,7 @@
       [:input {:type "submit"}]]]]))
 (defroutes app
   (GET "/post/:title" [title]
-       (show-post (first (post title))))
+       (show-post (post title)))
   (GET "/posts/create" []
        (post-form))
   (GET "/" []
