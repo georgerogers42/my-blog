@@ -5,7 +5,7 @@
 (defn atomize-post [post]
   (assoc post
     :id  (str "georgerogers42.heroku.com/post/" (:title post))
-    :url (str "georgerogers42.herokuapp.com/post/" (:title post))))
+    :url (str "/post/" (:title post))))
 (def posts
   [{:title  "Clojure programming"
     :updated "6-10-11"
