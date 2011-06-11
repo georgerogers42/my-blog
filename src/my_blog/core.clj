@@ -43,7 +43,7 @@
        (list-all-posts))
   (GET "/atom.xml" []
        (atom-feed {:title "georgerogers42"
-                   :url "georgerogers42.heroku.com/atom.xml"
+                   :url "http://georgerogers42.heroku.com/atom.xml"
                    :home-url "georgerogers42.herokuapp.com/"
                    :author-name "George Rogers"}
                   (map (comp atom-entry atomize-post) posts))))
