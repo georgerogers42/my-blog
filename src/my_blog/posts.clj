@@ -3,7 +3,7 @@
 (defn markdown [file]
   (.markdown (MarkdownProcessor.) (slurp file))) 
 (def posts
-  [{:title  "Hello World"
+  [{:title  "Clojure programming"
     :posted "Friday June 10, 2011"
     :body (markdown "hello.md")}])
 (def post (into {} (map (juxt :title identity) posts)))
