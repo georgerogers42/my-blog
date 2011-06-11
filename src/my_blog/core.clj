@@ -15,7 +15,9 @@
 (defn list-all-posts []
   (html5
     [:html
-     [:head]
+     [:head
+      [:link {:href "/atom.xml" :type "application/atom+xml" :rel "alternate"
+              :title "georgerogers42"}]
      [:body
       (for [post posts]
         [:div 
