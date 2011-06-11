@@ -9,6 +9,7 @@
 (def posts
   [{:title "Adding atom feeds in clojure"
     :updated "11-6-11"
+    :content (markdown "atom.md")}
    {:title  "Clojure programming"
     :updated "11-6-10"
     :content (markdown "hello.md")}])
