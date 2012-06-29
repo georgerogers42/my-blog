@@ -2,6 +2,7 @@
   (:gen-class)
   (:use ring.adapter.jetty
         compojure.core
+        compojure.handler
         net.cgrand.enlive-html
         my-blog.posts
         ring.middleware.stacktrace
@@ -9,7 +10,7 @@
   (:require [clj-time.format :as time-format]))
 (declare app)
 (defn -main []
-  (run-jetty (wrap-params app)
+  (run-jetty (site app)
              {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"))}))
 (deftemplate list-posts "my_blog/templates/posts.html" [posts]
   [:article]
@@ -24,6 +25,7 @@
     (html-content (:content post))))
 (defroutes app
   (GET "/post/:title" [title]
-       (list-posts [(post title)]))
+       (let [p (post (posts))]
+         (list-posts [(p title)])))
   (GET "/" []
-       (list-posts posts)))
+       (list-posts (posts))))

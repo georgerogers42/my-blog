@@ -5,6 +5,6 @@
                  [compojure "1.1.0"]
                  [ring "1.1.1"]
                  [org.markdownj/markdownj "0.3.0-1.0.2b4"]]
-  ;:plugins [[swank-clojure "1.4.2"]]
+  :plugins [[lein-swank "1.4.4"]]
   :main my-blog.core)
 
