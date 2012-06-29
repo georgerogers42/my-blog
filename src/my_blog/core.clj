@@ -20,7 +20,7 @@
      (set-attr :href (str "/post/" (:title post))))
     [:p.date]
     (content (:updated post))
-    [:p.content]
+    [:.content]
     (html-content (:content post))))
 (defroutes app
   (GET "/post/:title" [title]

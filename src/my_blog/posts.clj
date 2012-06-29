@@ -4,8 +4,12 @@
 (defn markdown [mdown]
   (. (MarkdownProcessor.) markdown mdown))
 (defn extract-metadata [html]
-  (let [[meta & body] (string/split (slurp html) #"\n\n")]
-    (assoc (read-string meta) :content (markdown (apply str body)))))
+  (let [html (slurp html)
+        [meta & body] (string/split html #"\n\n")]
+    (assoc (read-string html)
+      :content (markdown
+                (apply str
+                       (interpose "\n\n" body))))))
 (def posts
   (sort-by :updated
            (map extract-metadata (.. (java.io.File. "post") listFiles))))
