@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+  <head>
+    <title>George&apos;s Blog</title>
+  </head>
+  <body>
+    <h1 George&apos;s Blog
+    <article>
+      <h1><a class="title"></a></h1>
+      <p class="content"></p>
+    </article>
