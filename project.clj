@@ -1,16 +1,12 @@
 (defproject my-blog "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
-  :dependencies [[org.clojure/clojure "1.2.0"]
-                 [org.clojure/clojure-contrib "1.2.0"]
-                 [hiccup "0.3.5"]
-                 [compojure "0.6.3"]
-                 [ring-reload-modified "0.1.0"]
-                 [ring/ring-devel "0.3.8"]
-                 [ring/ring-core  "0.3.8"]
-                 [ring/ring-jetty-adapter "0.3.8"]
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [org.clojure/data.xml "0.0.3"]
+                 [enlive "1.0.1"]
+                 [hiccup "1.0.0"]
+                 [compojure "1.1.0"]
+                 [ring "1.1.1"]
                  [clj-time "0.3.0"]
-                 [org.markdownj/markdownj "0.3.0-1.0.2b4"]
-                 [atompub "0.2.1-SNAPSHOT"]]
-  :dev-dependencies [[swank-clojure "1.3.1"]]
+                 [org.markdownj/markdownj "0.3.0-1.0.2b4"]]
+  :dev-dependencies [[swank-clojure "1.4.0"]]
   :main my-blog.core)
-
