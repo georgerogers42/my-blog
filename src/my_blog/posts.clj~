@@ -1,12 +1,4 @@
-(ns my-blog.posts
-  (:require [clojureql.core :as cql])
-  (:require [clj-time.core :as time]
-            [clj-time.format :as time-format]))
-(def db
-  {:classname "org.sqlite.JDBC"
-   :subprotocol "sqlite"
-   :subname     "my-blog.db"})
-(def posts
-  (cql/table db :posts))
-(defn post [title]
-  (cql/select posts (cql/where (= :title title))))
+(ns my-blog.posts)
+(def posts (map (comp read-string slurp)
+                (files
+(def post (into {} (map (juxt :title identity) posts)))

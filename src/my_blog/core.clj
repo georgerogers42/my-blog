@@ -1,4 +1,5 @@
 (ns my-blog.core
+  (:gen-class)
   (:use ring.adapter.jetty
         compojure.core
         net.cgrand.enlive-html
@@ -21,32 +22,6 @@
     (content (:updated post))
     [:p.content]
     (html-content (:content post))))
-  
-(comment
-  (defn list-all-posts []
-    (html5
-     [:html
-     [:head
-      [:link {:href "/atom.xml" :type "application/atom+xml"
-              :rel "alternate"
-              :title "Sitewide ATOM Feed"}]]
-      [:body
-       [:a {:href "/atom.xml"} "Atom Feed"]
-       (for [post posts]
-         [:div 
-          [:h1 [:a {:href (str "/post/" (:title post))} (:title post)]]
-         [:p [:em (:updated post)]]
-          (:content post)])]]))
-  (defn show-post [post]
-    (html5
-     [:html
-      [:head]
-      [:body
-       [:div 
-        [:h1 (:title post)]
-        [:p [:em (:updated post)]]
-        [:p (:content post)]]
-       [:h2 [:a {:href "/"} "Back"]]]])))
 (defroutes app
   (GET "/post/:title" [title]
        (list-posts [(post title)]))
