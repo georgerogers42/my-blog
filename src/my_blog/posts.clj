@@ -1,8 +1,7 @@
 (ns my-blog.posts
   (:import [com.petebevin.markdown MarkdownProcessor])
   (:require [clojure.string :as string]
-            [clojure.java.jdbc :as sql])
-  (:use clj-time.format))
+            [clojure.java.jdbc :as sql]))
 (def db (System/getenv "DATABASE_URL"))
 (defn markdown [mdown]
   (. (MarkdownProcessor.) markdown mdown))

@@ -6,13 +6,16 @@
         compojure.handler
         net.cgrand.enlive-html
         my-blog.posts
+        my-blog.users
         ring.util.response)
-  (:require [clj-time.format :as time-format]))
+  (:require [cemerick.friend :as friend]
+            (cemerick.friend [workflows   :as workflows]
+                             [credentials :as creds]))) 
 (declare app)
 (defn start []
-  (run-jetty (site #'app) {:port 8080 :join? false}))
+  (run-jetty #'app {:port 8080 :join? false}))
 (defn -main []
-  (run-jetty (site app)
+  (run-jetty app
              {:port (Integer/parseInt (get (System/getenv) "PORT" "8080"))}))
 (deftemplate list-posts "my_blog/templates/posts.html" [posts]
   [:article]
@@ -30,13 +33,26 @@
   (set-attr :value title)
   [:#content]
   (content body))
-(defroutes app
+(deftemplate login-page "my_blog/templates/login.html" [])
+(defroutes app*
   (GET "/admin/create" []
-       (create-form "" ""))
+       (friend/authorize #{:admin}
+        (create-form "" "")))
   (POST "/admin/create" [title content]
-        (insert-post title content)
-        (redirect-after-post (str "/post/" title))) 
+        (friend/authorize #{:admin}
+         (insert-post title content)
+         (redirect-after-post (str "/post/" title))))
   (GET "/post/:title" [title]
        (list-posts [(post title)]))
+  (GET "/login" []
+       (login-page))
   (GET "/" []
        (list-posts (posts))))
+(def app
+  (-> app*
+      (friend/authenticate
+       {:login-uri "/login"
+        :unauthorized-redirect-uri "/login"
+        :credential-fn (partial creds/bcrypt-credential-fn users)
+        :workflows [(workflows/interactive-form)]})
+      site))
