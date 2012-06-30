@@ -6,20 +6,6 @@
 (def db (System/getenv "DATABASE_URL"))
 (defn markdown [mdown]
   (. (MarkdownProcessor.) markdown mdown))
-(defn extract-metadata [html]
-  (try 
-    (with-in-str (slurp html)
-      (let [meta (read)]
-        (assoc meta
-          :content (markdown
-                    (apply str (interpose "\n" (read-lines)))))))
-    (catch Exception e nil)))
-#_(defn posts [& {:keys [dir] :or {dir "post"}}]
-  (->> (.listFiles (java.io.File. dir))
-       (map extract-metadata)
-       (filter identity)
-       (map #(update-in % [:updated] (partial parse (formatters :date-hour))))
-       (sort-by :updated)))
 (defn posts []
   (sql/with-connection db
     (sql/with-query-results rows

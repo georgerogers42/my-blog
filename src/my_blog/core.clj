@@ -6,7 +6,7 @@
         compojure.handler
         net.cgrand.enlive-html
         my-blog.posts
-        my-blog.users
+        [my-blog.users :only (users)]
         ring.util.response)
   (:require [cemerick.friend :as friend]
             (cemerick.friend [workflows   :as workflows]
