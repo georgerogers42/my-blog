@@ -11,4 +11,3 @@
                  [org.markdownj/markdownj "0.3.0-1.0.2b4"]]
   :plugins [[lein-swank "1.4.4"]]
   :main my-blog.core)
-

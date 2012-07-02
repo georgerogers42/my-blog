@@ -34,18 +34,24 @@
   [:#content]
   (content body))
 (deftemplate login-page "my_blog/templates/login.html" [])
+(defroutes admin
+  (GET "/post/:title" [title]
+       (let [p (post title)]
+         (apply create-form ((juxt :title :content) p))))
+  (GET "/create" []
+       (create-form "" ""))
+  (POST "/create" [title content]
+        (insert-post title content)
+        (redirect-after-post (str "/post/" title))))
 (defroutes app*
-  (GET "/admin/create" []
-       (friend/authorize #{:admin}
-        (create-form "" "")))
-  (POST "/admin/create" [title content]
-        (friend/authorize #{:admin}
-         (insert-post title content)
-         (redirect-after-post (str "/post/" title))))
+  (context "/admin" request
+      (friend/wrap-authorize admin #{:admin}))
   (GET "/post/:title" [title]
        (list-posts [(post title)]))
   (GET "/login" []
        (login-page))
+  (GET "/:title" [title]
+       (list-posts [(post title)]))
   (GET "/" []
        (list-posts (posts))))
 (def app

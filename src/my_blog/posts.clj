@@ -14,9 +14,12 @@
       rows)))
 (defn insert-post [title content]
   (sql/with-connection db
-    (sql/do-prepared
-     "INSERT INTO posts(title, updated, content) VALUES (?, now(), ?)"
-     [title content])))
+    (sql/update-or-insert-values
+     :posts
+     ["title=?" title]
+     {:title title
+      :content content
+      :updated (java.sql.Timestamp. (System/currentTimeMillis))})))
 (defn create-db []
   (sql/with-connection db
     (sql/do-commands
@@ -25,9 +28,9 @@
                          content text not null)"
      "CREATE TABLE users(username char(80) primary key,
                          password varchar(255) not null)")
-    (let [_ (print "new username: ")
+    (let [_ (println "new username:")
           username (read-line)
-          _ (print "new password: ")
+          _ (println "new password:")
           password (read-line)]
       (users/create-user username password))))
 (defn post [title]
